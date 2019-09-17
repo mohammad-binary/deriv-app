@@ -126,7 +126,8 @@
   width: 16px;
   height: 16px;
   transition: all 0.3s ease-in-out;
-  margin-right: 8px; }
+  margin-right: 8px;
+  align-self: center; }
 
 .dc-radio-group__circle--selected {
   border-width: 4px;
