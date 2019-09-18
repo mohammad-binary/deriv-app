@@ -1112,16 +1112,19 @@ html {
   cursor: not-allowed !important; }
 
 .btn--flat {
-  background: #fff; }
+  background-color: transparent;
+  font-weight: bold;
+  border: solid 1px #999999;
+  height: 3.2em; }
 
 .btn--flat .btn__text {
-  color: #4c5794; }
+  color: #333333; }
 
 .btn--flat:hover:not([disabled]) {
-  background: #f2f3f8; }
+  background: transparent; }
 
 .btn--flat:active:not([disabled]) span {
-  color: #4c5794; }
+  color: transparent; }
 
 .btn--flat.effect:focus:not(:active):after {
   border: 0 solid #4c5794; }
@@ -4189,9 +4192,13 @@ table {
       left: 16px;
       height: calc(100vh - 48px - 35px - (8px * 4));
       border-bottom-right-radius: 0;
-      border-top-right-radius: 0; }
+      border-top-right-radius: 0;
+      z-index: 1;
+      overflow: hidden; }
       .trade-container__replay .contract-drawer-wrapper {
         z-index: 4; }
+      .trade-container__replay .contract-drawer .contract-card__sell-button--exit {
+        display: none; }
     .trade-container__replay .replay-chart__container {
       width: 100%;
       position: relative;
@@ -5303,7 +5310,7 @@ table {
   height: calc(100vh - 48px - 35px - 2px - (8px * 3.6));
   margin-top: 16px;
   position: absolute;
-  z-index: 2;
+  z-index: 1;
   top: 0;
   left: 4px;
   box-sizing: border-box;
@@ -6569,13 +6576,11 @@ table {
 /** @define contract-audit; */
 .contract-audit__wrapper {
   margin-top: 1em;
-  transition: max-height 0.2s ease, opacity 0.2s linear;
-  will-change: max-height, opacity;
   border-radius: 4px;
   padding: 2px 4px;
-  height: 100%;
-  max-height: 0;
-  opacity: 0;
+  opacity: 1;
+  height: calc(100vh - 32.6em);
+  max-height: calc(100vh - 32.6em);
   overflow: hidden; }
   .theme--light .contract-audit__wrapper {
     background-color: #ffffff;
@@ -6583,10 +6588,6 @@ table {
   .theme--dark .contract-audit__wrapper {
     background-color: #101320;
     color: #ffffff; }
-  .contract-audit__wrapper--is-open {
-    opacity: 1;
-    height: calc(100vh - 32.6em);
-    max-height: calc(100vh - 32.6em); }
 
 .contract-audit__grid {
   display: flex;
@@ -7788,83 +7789,6 @@ table {
       color: rgba(0, 0, 0, 0.8); }
     .theme--dark .range-slider__caption span {
       color: #ffffff; }
-
-/** @define tab-container */
-.tab-container {
-  overflow-x: auto;
-  overflow-y: hidden; }
-  .tab-container--left {
-    text-align: left; }
-  .tab-container--center {
-    text-align: center; }
-  .tab-container--right {
-    text-align: right; }
-
-/** @define tab-wrapper */
-.tab-wrapper {
-  position: relative;
-  display: flex;
-  width: 100%; }
-
-/** @define tab */
-.tab {
-  display: inline-flex;
-  align-items: center;
-  justify-content: space-evenly;
-  flex: 1;
-  -webkit-box-flex: 1; }
-  .tab__header {
-    font-size: 1.4em;
-    color: rgba(0, 0, 0, 0.8);
-    font-weight: 300;
-    text-transform: capitalize;
-    text-align: left;
-    line-height: 1.5;
-    padding: 13.33333px;
-    cursor: pointer; }
-    .theme--light .tab__header {
-      color: rgba(0, 0, 0, 0.8); }
-    .theme--dark .tab__header {
-      color: #7f8397; }
-    .tab__header:after {
-      display: block;
-      content: attr(title);
-      font-weight: 400;
-      height: 0;
-      overflow: hidden;
-      visibility: hidden; }
-  .tab__icon {
-    padding: 1.6em 1.8em 1.6em 3.4em; }
-    .tab__icon:before {
-      position: absolute;
-      top: 1.6em;
-      left: 1.4em; }
-  .tab:hover .tab__header, .tab--active .tab__header {
-    font-weight: 400; }
-    .theme--light .tab:hover .tab__header, .theme--light .tab--active .tab__header {
-      color: rgba(0, 0, 0, 0.8); }
-    .theme--dark .tab:hover .tab__header, .theme--dark .tab--active .tab__header {
-      color: #ffffff; }
-
-/** @define tab-underline */
-.tab-underline {
-  position: absolute;
-  bottom: -0.1em;
-  left: 0;
-  right: 0; }
-  .theme--light .tab-underline {
-    border-bottom: 2px solid rgba(0, 0, 0, 0.8); }
-  .theme--dark .tab-underline {
-    border-bottom: 2px solid #ffffff; }
-
-/** @define tab-content */
-.tab-content p {
-  font-size: 1.4em;
-  color: rgba(0, 0, 0, 0.8);
-  font-weight: 400;
-  text-transform: capitalize;
-  text-align: left;
-  line-height: 1.5; }
 
 /** @define toggle-button */
 .toggle-button {
@@ -9132,7 +9056,7 @@ table {
     width: 2px;
     height: 2px;
     margin-left: -2px;
-    margin-bottom: -1px; }
+    margin-top: -2px; }
     .theme--light .chart-spot__sell {
       background-color: #999cac;
       border: 2px solid #999cac; }
